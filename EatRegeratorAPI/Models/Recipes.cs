@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EatRegeratorAPI
 {
-    public partial class Recipe
+    public partial class Recipes
     {
         public Guid RecipeGuid { get; set; }
         public string Text { get; set; }
@@ -12,6 +12,6 @@ namespace EatRegeratorAPI
         public string Title { get; set; }
         public Guid DishGuid { get; set; }
 
-        public virtual Dish Dish { get; set; }
+        public virtual Dishes DishGu { get; set; }
     }
 }

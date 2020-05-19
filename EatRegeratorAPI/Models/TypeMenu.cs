@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace EatRegeratorAPI
 {
-    public partial class TypeDishes
+    public partial class TypeMenu
     {
-        public TypeDishes()
+        public TypeMenu()
         {
             Dishes = new HashSet<Dishes>();
         }
 
-        public Guid TypeGuid { get; set; }
+        public Guid TypeMenuGuid { get; set; }
         public string Title { get; set; }
         public int Code { get; set; }
 
