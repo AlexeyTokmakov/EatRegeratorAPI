@@ -23,16 +23,6 @@ namespace EatRegeratorAPI.Controllers
       eatService = _eatService;
     }
 
-    [HttpGet]
-    public List<Dishes> Get()
-    {
-      using (EatRegeratorContext db = new EatRegeratorContext())
-      {
-        List<Dishes> eat = db.Dishes.Include(d => d.TypeGu).Include(d => d.Recipes).ToList();
-        return eat;
-      }
-    }
-
     [HttpGet("GetProducts")]
     public GetProductsResult GetProducts()
     {
@@ -62,6 +52,5 @@ namespace EatRegeratorAPI.Controllers
     {
       return eatService.GetDishes(input);
     }
-
   }
 }
