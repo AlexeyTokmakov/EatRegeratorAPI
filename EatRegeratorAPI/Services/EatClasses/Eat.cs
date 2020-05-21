@@ -9,8 +9,8 @@ namespace EatRegeratorAPI.Services.EatClasses
   {
     public List<Guid> IncreaseProductGuids { get; set; }
     public List<Guid> DecreaseProductGuids { get; set; }
-    public Guid TypeDishesGuid { get; set; }
-    public Guid TypeKitchensGuid { get; set; }
-    public Guid TypeMenuGuid { get; set; }
+    public Guid? TypeDishesGuid { get; set; }
+    public Guid? TypeKitchensGuid { get; set; }
+    public Guid? TypeMenuGuid { get; set; }
   }
 }
