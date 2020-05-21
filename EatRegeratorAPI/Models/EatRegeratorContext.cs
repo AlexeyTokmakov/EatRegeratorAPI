@@ -61,6 +61,10 @@ namespace EatRegeratorAPI
 
         entity.Property(e => e.TypeMenuGuid).HasColumnName("typeMenuGUID");
 
+        entity.Property(e => e.PictureUrl).HasColumnName("pictureUrl");
+
+        entity.Property(e => e.Description).HasColumnName("description");
+
         entity.HasOne(d => d.TypeGu)
                   .WithMany(p => p.Dishes)
                   .HasForeignKey(d => d.TypeGuid)
@@ -82,23 +86,32 @@ namespace EatRegeratorAPI
 
       modelBuilder.Entity<Product2Dishs>(entity =>
       {
-        entity.HasNoKey();
+        entity.HasKey(t => new { t.DishGuid, t.ProductGuid });
 
         entity.Property(e => e.DishGuid).HasColumnName("dishGUID");
 
         entity.Property(e => e.ProductGuid).HasColumnName("productGUID");
 
         entity.HasOne(d => d.DishGu)
-                  .WithMany()
+                  .WithMany(d => d.Product2Dishs)
                   .HasForeignKey(d => d.DishGuid)
                   .OnDelete(DeleteBehavior.ClientSetNull)
                   .HasConstraintName("FK__Product2D__dishG__2B3F6F97");
 
         entity.HasOne(d => d.ProductGu)
-                  .WithMany()
+                  .WithMany(d => d.Product2Dishs)
                   .HasForeignKey(d => d.ProductGuid)
                   .OnDelete(DeleteBehavior.ClientSetNull)
                   .HasConstraintName("FK__Product2D__produ__2A4B4B5E");
+
+
+        //entity.HasOne(sc => sc.DishGu)
+        //    .WithMany(s => s.Product2Dishs)
+        //    .HasForeignKey(sc => sc.DishGuid);
+
+        //entity.HasOne(sc => sc.ProductGu)
+        //      .WithMany(s => s.Product2Dishs)
+        //      .HasForeignKey(sc => sc.ProductGuid);
       });
 
       modelBuilder.Entity<Products>(entity =>

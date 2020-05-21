@@ -37,6 +37,7 @@ namespace EatRegeratorAPI
       });
 
       services.AddTransient<IEatService, EatService>();
+      services.AddTransient<EatRegeratorContext>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

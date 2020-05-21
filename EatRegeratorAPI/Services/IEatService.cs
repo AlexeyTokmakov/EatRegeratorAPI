@@ -1,4 +1,5 @@
 ﻿using EatRegeratorAPI.Services;
+using EatRegeratorAPI.Services.EatClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace EatRegeratorAPI.Service
     GetTypeDishesResult GetTypeDishes();
     GetTypesKitchensResult GetTypesKitchens();
     GetTypesMenuResult GetTypesMenu();
+    GetDishesResult GetDishes(GetDishesInput input);
 
   }
 }

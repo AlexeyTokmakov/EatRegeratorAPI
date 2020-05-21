@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EatRegeratorAPI.Service;
 using EatRegeratorAPI.Services;
+using EatRegeratorAPI.Services.EatClasses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -54,6 +55,12 @@ namespace EatRegeratorAPI.Controllers
     public GetTypesMenuResult GetTypesMenu()
     {
       return eatService.GetTypesMenu();
+    }
+
+    [HttpPost("GetDishes")]
+    public GetDishesResult GetDishes(GetDishesInput input)
+    {
+      return eatService.GetDishes(input);
     }
 
   }

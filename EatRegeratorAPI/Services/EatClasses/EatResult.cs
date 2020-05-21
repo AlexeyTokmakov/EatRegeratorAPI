@@ -24,4 +24,9 @@ namespace EatRegeratorAPI.Services
   {
     public List<TypeMenu> TypesMenu { get; set; }
   }
+
+  public class GetDishesResult: BaseResult
+  {
+    public List<Dishes> Dishes { get; set; }
+  }
 }
