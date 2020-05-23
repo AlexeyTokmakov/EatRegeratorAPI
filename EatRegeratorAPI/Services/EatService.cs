@@ -94,8 +94,50 @@ namespace EatRegeratorAPI.Service
           foreach (var product in input.IncreaseProductGuids)
             dishes = dishes.Where(d => d.Product2Dishs.Find(p => p.ProductGuid == product) != null).ToList();
 
-        result.Dishes = dishes;
+        result.Dishes = dishes?.Select(d => new Dish
+        {
+          CookingTime = d?.CookingTime,
+          Description = d?.Description,
+          DishGuid = d.DishGuid,
+          PictureUrl = d?.PictureUrl,
+          Title = d?.Title,
+          TypeGuid = d.TypeGuid,
+          TypeKitchenGuid = d.TypeKitchenGuid,
+          TypeMenuGuid = d.TypeMenuGuid
+        }).ToList() ?? new List<Dish>(); ;
 
+      }
+      catch (Exception ex)
+      {
+        SetException(result, ex);
+      }
+      return result;
+    }
+
+    public GetRecipeResult GetRecipe(Guid dishGuid)
+    {
+      GetRecipeResult result = new GetRecipeResult();
+      try
+      {
+        var recipe = db.Dishes.Where(d => d.DishGuid == dishGuid).Include(d => d.Recipes).ToList();
+
+        if (recipe != null)
+        {
+          result.Recipe = new DishRecipe();
+          result.Recipe.CookingTime = recipe[0]?.CookingTime;
+          result.Recipe.Description = recipe[0]?.Description;
+          result.Recipe.DishGuid = recipe[0].DishGuid;
+          result.Recipe.PictureUrl = recipe[0]?.PictureUrl;
+          result.Recipe.Title = recipe[0]?.Title;
+          result.Recipe.Recipe = recipe[0].Recipes?.Select(r => new Recipe
+          {
+            RecipeGuid = r.RecipeGuid,
+            Order = r.Order,
+            PictureUrl = r?.PictureUrl,
+            Text = r?.Text,
+            Title = r?.Title
+          }).ToList() ?? new List<Recipe>();
+        }
       }
       catch (Exception ex)
       {

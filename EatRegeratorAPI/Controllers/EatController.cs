@@ -52,5 +52,11 @@ namespace EatRegeratorAPI.Controllers
     {
       return eatService.GetDishes(input);
     }
+
+    [HttpGet("GetRecipe")]
+    public GetRecipeResult GetRecipe(Guid dishGuid)
+    {
+      return eatService.GetRecipe(dishGuid);
+    }
   }
 }

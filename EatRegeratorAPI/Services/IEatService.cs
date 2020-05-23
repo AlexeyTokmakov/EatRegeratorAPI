@@ -14,6 +14,6 @@ namespace EatRegeratorAPI.Service
     GetTypesKitchensResult GetTypesKitchens();
     GetTypesMenuResult GetTypesMenu();
     GetDishesResult GetDishes(GetDishesInput input);
-
+    GetRecipeResult GetRecipe(Guid dishGuid);
   }
 }

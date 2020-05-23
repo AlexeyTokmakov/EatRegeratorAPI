@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EatRegeratorAPI.Services.EatClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,6 +28,11 @@ namespace EatRegeratorAPI.Services
 
   public class GetDishesResult: BaseResult
   {
-    public List<Dishes> Dishes { get; set; }
+    public List<Dish> Dishes { get; set; }
+  }
+
+  public class GetRecipeResult : BaseResult
+  {
+    public DishRecipe Recipe { get; set; }
   }
 }
